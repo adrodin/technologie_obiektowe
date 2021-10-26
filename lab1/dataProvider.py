@@ -8,6 +8,7 @@ class DataProvider:
     def __init__(self):
         pass
 
+
     @staticmethod
     def __get_data_from_web():
         response = requests.get(DATA_URL)
