@@ -30,6 +30,6 @@ class DataProvider:
                 "name": e.find("nazwa_waluty").text,
                 "code": e.find("kod_waluty").text,
                 "course": float(e.find("kurs_sredni").text.replace(",", ".")),
-                "converter": float((e.find("przelicznik").text.replace(",", ".")))
+                "multiplier": float((e.find("przelicznik").text.replace(",", ".")))
             })
         return list_to_send

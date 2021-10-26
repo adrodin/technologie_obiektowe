@@ -26,9 +26,9 @@ class CurrencyBank:
         self.__update_time = datetime.now()
         for e in DataProvider.get_data(DataProvider()):
             if e['code'] in self.__repository.keys():
-                self.__repository[e["code"]].set_course(e["course"], e["converter"])
+                self.__repository[e["code"]].set_course(e["course"], e["multiplier"])
             else:
-                self.__repository[e["code"]] = Currency(e["name"], e["code"], e["course"], e["converter"])
+                self.__repository[e["code"]] = Currency(e["name"], e["code"], e["course"], e["multiplier"])
 
     def get_currency_course(self, code):
         if self.__update_time + timedelta(minutes=15) < datetime.now():

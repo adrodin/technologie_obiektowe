@@ -1,9 +1,9 @@
 
 class Currency:
-    def __init__(self, name, code, course, converter):
+    def __init__(self, name, code, course, multiplier):
         self.__name = name
         self.__code = code
-        self.__course = round(course/converter, 6)
+        self.__course = round(course/multiplier, 6)
 
     def get_name(self):
         return self.__name
@@ -14,5 +14,5 @@ class Currency:
     def get_course(self):
         return self.__course
 
-    def set_course(self, course, converter):
-        self.__course = round(course / converter, 6)
+    def set_course(self, course, multiplier):
+        self.__course = round(course / multiplier, 6)
