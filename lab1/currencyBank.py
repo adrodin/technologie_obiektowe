@@ -25,16 +25,6 @@ class CurrencyBank:
 
     def __update(self):
         self.__update_time = datetime.now()
-        # root = ET.fromstring(DataSource.get_data())
-        # for e in root.findall("pozycja"):
-        #   name = e.find("nazwa_waluty").text
-        #  code = e.find("kod_waluty").text
-        # course = float(e.find("kurs_sredni").text.replace(",", "."))
-        # converter = float((e.find("przelicznik").text.replace(",", ".")))
-        # if code in self.__repository.keys():
-        #   self.__repository[code].set_course(course, converter)
-        # else:
-        #   self.__repository[code] = Currency(name, code, course, converter)
         for e in DataSource.get_data(DataSource()):
             if e['code'] in self.__repository.keys():
                 self.__repository[e["code"]].set_course(e["course"], e["converter"])

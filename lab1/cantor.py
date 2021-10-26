@@ -1,6 +1,14 @@
 from currencyBank import CurrencyBank
 
 
+def is_float(value):
+    try:
+        float(value)
+        return True
+    except ValueError:
+        return False
+
+
 class Cantor:
     def __init__(self):
         self.__currency_bank = CurrencyBank()
@@ -8,7 +16,8 @@ class Cantor:
     def run(self):
         flag = True
         while flag:
-            self.__menu()
+            print("1. Wymiana")
+            print("2. Wyjście")
             flag = self.__input_analysis()
 
     def __input_analysis(self):
@@ -31,16 +40,9 @@ class Cantor:
             currency_code = input().upper()
         return currency_code
 
-    def __is_float(self, value):
-        try:
-            float(value)
-            return True
-        except ValueError:
-            return False
-
     def __input_float(self):
         inp = input().replace(',', '.')
-        while not self.__is_float(inp):
+        while not is_float(inp):
             print("Podana wartość musi być liczbą")
             print("Podaj wartość")
             inp = input().replace(',', '.')
@@ -62,7 +64,3 @@ class Cantor:
         currency_in_course = self.__currency_bank.get_currency_course(currency_in)
         currency_out_course = self.__currency_bank.get_currency_course(couurency_out)
         return round(value * currency_in_course / currency_out_course, 2)
-
-    def __menu(self):
-        print("1. Wymiana")
-        print("2. Wyjście")
