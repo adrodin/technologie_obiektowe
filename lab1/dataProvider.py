@@ -20,6 +20,7 @@ class DataProvider:
         finally:
             return response.text
 
+
     @staticmethod
     def get_data(self):
         root = ET.fromstring(self.__get_data_from_web())
