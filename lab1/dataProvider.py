@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 DATA_URL = "https://www.nbp.pl/kursy/xml/lasta.xml"
 
 
-class DataSource:
+class DataProvider:
     def __init__(self):
         pass
 

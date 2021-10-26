@@ -18,12 +18,12 @@ class Cantor:
         while flag:
             print("1. Wymiana")
             print("2. Wyjście")
-            flag = self.__input_analysis()
+            flag = self.__input_logic()
 
-    def __input_analysis(self):
+    def __input_logic(self):
         answer = input()
         if answer == '1':
-            self.__exchange_menu()
+            self.__exchange_logic()
             return True
         elif answer == '2':
             print("Koniec działania aplikacji....")
@@ -48,7 +48,7 @@ class Cantor:
             inp = input().replace(',', '.')
         return float(inp)
 
-    def __exchange_menu(self):
+    def __exchange_logic(self):
         print("Aktualne kursy:")
         self.__currency_bank.print_all_currencies()
         print("Wprowadź kod wejściowej waluty")

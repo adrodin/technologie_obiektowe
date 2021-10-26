@@ -1,7 +1,6 @@
-import xml.etree.ElementTree as ET
 from currency import Currency
 from datetime import datetime, timedelta
-from dataSource import DataSource
+from dataProvider import DataProvider
 
 DATA_URL = "https://www.nbp.pl/kursy/xml/lasta.xml"
 
@@ -25,14 +24,11 @@ class CurrencyBank:
 
     def __update(self):
         self.__update_time = datetime.now()
-        for e in DataSource.get_data(DataSource()):
+        for e in DataProvider.get_data(DataProvider()):
             if e['code'] in self.__repository.keys():
                 self.__repository[e["code"]].set_course(e["course"], e["converter"])
             else:
                 self.__repository[e["code"]] = Currency(e["name"], e["code"], e["course"], e["converter"])
-
-    def get_currency_list(self):
-        return self.__repository.keys()
 
     def get_currency_course(self, code):
         if self.__update_time + timedelta(minutes=15) < datetime.now():
